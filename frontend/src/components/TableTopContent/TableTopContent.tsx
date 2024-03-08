@@ -54,7 +54,6 @@ const TableTopContent: React.FC<TableTopContentProps> = ({ onAddMoreButtonClick,
                         placeholder="Filtros"
                         size="lg"
                         fullWidth
-                        disabled={isPending || isRefetching}
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
