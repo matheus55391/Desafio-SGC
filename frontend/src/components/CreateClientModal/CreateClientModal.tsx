@@ -55,8 +55,15 @@ const CreateClientModal: React.FC<CreateClientModalProps> = ({ isOpen, onOpenCha
     })
 
     const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+        const mutationData = {
+            nome: data.nome,
+            email: data.email,
+            telefone: data.telefone,
+            coordenada_x: Number(data.coordenada_x),
+            coordenada_y: Number(data.coordenada_y)
+        }
         await toast.promise(
-            mutation.mutateAsync(data),
+            mutation.mutateAsync(mutationData),
             {
                 pending: 'Aguarde um momento. 🤖',
                 success: 'Cliente criado com sucesso! 🎉',

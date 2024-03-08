@@ -1,7 +1,7 @@
 import { IClient } from "@/@types/Client.interface";
 import { CreateClientRequestDTO, CreateClientResponseDTO } from "@/@types/CreateClient.DTOs";
 import { GetClientsRequestDTO } from "@/@types/GetClients.DTOs";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 
 
 class ApiService {
@@ -13,22 +13,22 @@ class ApiService {
     }
 
     public async createClient(cliente: CreateClientRequestDTO): Promise<CreateClientResponseDTO> {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        const response: AxiosResponse<CreateClientResponseDTO> = await axios.post(`${ApiService.BASE_URL}/clientes`, cliente);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        const response = await axios.post(`${ApiService.BASE_URL}/clientes`, cliente);
         return response.data;
     }
 
     public async getClients(params?: GetClientsRequestDTO): Promise<IClient[]> {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        const response: AxiosResponse<CreateClientResponseDTO[]> = await axios.get(`${ApiService.BASE_URL}/clientes`, {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        const response = await axios.get<IClient[]>(`${ApiService.BASE_URL}/clientes`, {
             params,
         });
         return response.data;
     }
 
     public async getClientsByOrdemVisita(): Promise<IClient[]> {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        const response: AxiosResponse<CreateClientResponseDTO[]> = await axios.get(`${ApiService.BASE_URL}/clientes/ordem-visita`);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        const response = await axios.get<IClient[]>(`${ApiService.BASE_URL}/clientes/ordem-visita`);
         return response.data;
     }
 

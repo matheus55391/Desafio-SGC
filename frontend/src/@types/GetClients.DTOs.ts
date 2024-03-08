@@ -4,4 +4,3 @@ export interface GetClientsRequestDTO {
     email?: string;
     telefone?: string;
 }
-

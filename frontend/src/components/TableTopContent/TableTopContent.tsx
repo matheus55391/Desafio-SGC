@@ -2,7 +2,7 @@
 'use client'
 
 import { useGetClients } from "@/hooks/useGetClients";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { TbRoute } from "react-icons/tb";
@@ -59,30 +59,51 @@ const TableTopContent: React.FC<TableTopContentProps> = ({ onAddMoreButtonClick,
 
                     />
                 </div>
-                <div className="flex w-full sm:max-w-[40%] justify-end sm:justify-between sm:gap-3 items-baseline ">
-                    <span className="text-default-400 text-small flex sm:hidden">Total {data?.length} clientes </span>
+                {/* flex w-full sm:max-w-[40%] justify-end sm:justify-between sm:gap-3 items-baseline */}
+                <div className="flex flex-row justify-between w-full ">
 
-                    <Input className="w-6 ml-3 flex sm:hidden" size="sm" variant="underlined" value={rowsPerPage?.toString()}
-                        onChange={(e) => changeRowsPerPage(Number(e.target.value))}
-                    />
-                    <Button
-                        className="bg-foreground text-background  ml-auto"
-                        size="md"
-                        onClick={onAddMoreButtonClick}
-                        aria-label="Criar novo cliente"
-                    >
-                        <span className="font-semibold text-sm hidden sm:flex">Novo Cliente</span>
-                        <IoPersonAddOutline size={20} />
-                    </Button>
-                    <Button
-                        className="bg-foreground text-background  ml-auto"
-                        size="md"
-                        onClick={onCalculateRouteButtonClick}
-                        aria-label="Calcular Trajeto"
-                    >
-                        <span className="font-semibold text-sm hidden sm:flex">Calcular Trajeto</span>
-                        <TbRoute size={20} />
-                    </Button>
+
+                    <div className="flex flex-col sm:flex-none sm:hidden  justify-between items-left ">
+                        <span className="text-default-400 text-small flex sm:hidden">Total {data?.length}  clientes</span>
+                        <Input className="w-16" size="sm" variant="underlined" labelPlacement="outside-left" label="Rows" value={rowsPerPage?.toString()}
+                            onChange={(e) => changeRowsPerPage(Number(e.target.value))}
+                        />
+                    </div>
+
+                    <Dropdown>
+                        <DropdownTrigger>
+                            <Button
+                                variant="bordered"
+                                className="ml-auto"
+                            >
+                                Opções
+                            </Button>
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Static Actions">
+                            <DropdownItem key="NovoCliente">
+                                <Button
+                                    className="bg-foreground text-background ml-auto w-full"
+                                    size="md"
+                                    onClick={onAddMoreButtonClick}
+                                    aria-label="Criar novo cliente"
+                                >
+                                    <span className="font-semibold text-sm hidden sm:flex">Novo Cliente</span>
+                                    <IoPersonAddOutline size={20} />
+                                </Button>
+                            </DropdownItem>
+                            <DropdownItem key=">CalcularTrajeto">
+                                <Button
+                                    className="bg-foreground text-background ml-auto w-full"
+                                    size="md"
+                                    onClick={onCalculateRouteButtonClick}
+                                    aria-label="Calcular Trajeto"
+                                >
+                                    <span className="font-semibold text-sm hidden sm:flex">Calcular Trajeto</span>
+                                    <TbRoute size={20} />
+                                </Button>
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
 
                 </div>
             </div>
