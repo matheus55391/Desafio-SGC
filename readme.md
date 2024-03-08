@@ -4,12 +4,10 @@ Este é um projeto full stack desenvolvido para facilitar o gerenciamento de cli
 
 ## Rodando o projeto 
 
-### Subindo o banco
-
-Para subir o banco basta rodar o seguinte comando:.
+Para iniciar o projet basta rodar o seguinte comando:.
 
 ```bash
-  docker-compose up -build
+  docker-compose up --build
 ```
 
 ## Estrutura do Projeto
