@@ -23,21 +23,9 @@ const TableTopContent: React.FC<TableTopContentProps> = ({ onAddMoreButtonClick,
         telefone: filter
     })
 
-    const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        const newTimeoutId = setTimeout(() => {
-            query.refetch();
-        }, 1500);
-        setTimeoutId(newTimeoutId);
-        return () => {
-            if (newTimeoutId) {
-                clearTimeout(newTimeoutId);
-            }
-        };
+        query.refetch();
     }, [filter]);
 
     return (

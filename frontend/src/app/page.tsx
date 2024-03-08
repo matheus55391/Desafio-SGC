@@ -16,7 +16,6 @@ export interface Customer {
 }
 
 export default function Home() {
-    const [mounted, setMounted] = useState(false)
     const { data, isPending, ...query } = useGetClients()
     const createClientModal = useDisclosure();
     const routeTraceModal = useDisclosure();
@@ -41,11 +40,6 @@ export default function Home() {
         />,
         [isPending, page, pages, query.isRefetching]);
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
-
-
     function phoneNumberMask(telefone: string) {
         // Remover caracteres não numéricos
         const numeroLimpo = telefone.replace(/\D/g, '');
@@ -63,8 +57,6 @@ export default function Home() {
         }
     }
 
-    if (!mounted) return null
-    const clientsList = data ?? []
 
     return (
         <div className="flex flex-col min-h-[100dvh] max-h-[100dvh] text-foreground bg-background item ">
@@ -100,7 +92,7 @@ export default function Home() {
                         </TableHeader>
                         <TableBody isLoading={isPending || query.isRefetching} loadingContent={<Spinner label="Carregando..." />} emptyContent="Nenhum cliente encontrado." >
                             {
-                                clientsList
+                                (data || [])
                                     .slice((page - 1) * rowsPerPage, page * rowsPerPage)
                                     .map((client, index) => (
                                         <TableRow key={index}>
