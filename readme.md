@@ -15,8 +15,13 @@ Para iniciar o projet basta rodar o seguinte comando:.
 ### Backend (NestJS)
 O backend utiliza o framework NestJS e está localizado na pasta ./backend.
 
+Swagger do backend http://localhost:5000/api
+
 ### Frontend (React com Next.js e NextUI)
 O frontend está na pasta ./frontend e utiliza React com Next.js e a biblioteca NextUI para a interface.
+
+O front end vai esta hospedado na porta 3000
+http://localhost:3000/
 
 ## Sistema de Gerenciamento de Clientes (SGC)
 
