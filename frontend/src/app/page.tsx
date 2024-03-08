@@ -1,7 +1,7 @@
 'use client'
 import { TableTopContent } from "@/components/TableTopContent";
-import { Modal, ModalBody, ModalContent, ModalHeader, Navbar, NavbarBrand, NavbarContent, NavbarItem, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, User, useDisclosure } from "@nextui-org/react";
-import { useEffect, useMemo, useState } from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, User, useDisclosure } from "@nextui-org/react";
+import { useMemo, useState } from "react";
 
 import CreateClientModal from "@/components/CreateClientModal/CreateClientModal";
 import TableBottomContent from "@/components/TableBottomContent/TableBottomContent";
@@ -41,18 +41,13 @@ export default function Home() {
         [isPending, page, pages, query.isRefetching]);
 
     function phoneNumberMask(telefone: string) {
-        // Remover caracteres não numéricos
         const numeroLimpo = telefone.replace(/\D/g, '');
 
-        // Verificar o tamanho do número
         if (numeroLimpo.length === 11) {
-            // Formatar para (XX) XXXXX-XXXX
             return `(${numeroLimpo.substring(0, 2)}) ${numeroLimpo.substring(2, 7)}-${numeroLimpo.substring(7, 11)}`;
         } else if (numeroLimpo.length === 10) {
-            // Formatar para (XX) XXXX-XXXX
             return `(${numeroLimpo.substring(0, 2)}) ${numeroLimpo.substring(2, 6)}-${numeroLimpo.substring(6, 10)}`;
         } else {
-            // Retornar o número original se não estiver nos formatos esperados
             return telefone;
         }
     }

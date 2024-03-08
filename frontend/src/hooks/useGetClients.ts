@@ -5,7 +5,7 @@ import QueryKeys from "@/config/QueryKeys"
 
 export function useGetClients(params?: GetClientsRequestDTO) {
     return useQuery({
-        queryKey: [QueryKeys.GET_CLIENTS, params],
+        queryKey: [QueryKeys.GET_CLIENTS],
         queryFn: () => apiService.getClients(params),
         refetchOnWindowFocus: true,
     })
