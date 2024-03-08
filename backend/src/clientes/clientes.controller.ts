@@ -38,7 +38,6 @@ export class ClientesController {
     type: CriarClienteDto,
   })
   async create(@Body() clienteDto: CriarClienteDto): Promise<ICliente> {
-    console.log(clienteDto);
     return await this.clientesService.criarCliente(clienteDto);
   }
 }
